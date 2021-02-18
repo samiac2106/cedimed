@@ -27,6 +27,15 @@ if (empty($_SESSION['active'])){
  ?>
     <div class="" id="container">
 <br><br><br>
+
+<center>
+            <div style="width:950px">
+                <h1>Lista Contingencia </h1><a href="registroContingencia.php" class="btn btn-info ml-5" > Ingresar pacientes contingencia</a>
+               
+
+            </div>
+        </center>
+
         <div class="tablaContingencia"></div>
 
 

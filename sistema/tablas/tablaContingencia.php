@@ -14,6 +14,7 @@ $contingencias = $conectar->consultarDatos($consultaSQL);
 <table class="table table-hover tablaDinamica">
     <thead>
         <tr>
+        <th>idConsulta</th>
             <th>Documento</th>
             <th>Nombres</th>
             <th>Apellidos</th>
@@ -29,6 +30,7 @@ $contingencias = $conectar->consultarDatos($consultaSQL);
     </thead>
     <tfoot>
         <tr>
+        <th>idConsulta</th>
             <th>Documento</th>
             <th>Nombres</th>
             <th>Apellidos</th>
@@ -53,6 +55,7 @@ $contingencias = $conectar->consultarDatos($consultaSQL);
             ?>
         
             <tr>
+            <td><?php echo ($contingencia['id_consulta']);  ?></td>
                 <td><?php echo ($contingencia['documento']);  ?></td>
                 <td><?php echo ($contingencia['nombres']);  ?></td>
                 <td><?php echo ($contingencia['apellidos']);   ?></td>
@@ -84,7 +87,7 @@ $contingencias = $conectar->consultarDatos($consultaSQL);
         // DataTable
         var table = $('.tablaDinamica').DataTable({
             "order": [
-                [1, "asc"]
+                [0, "desc"]
             ],
             "pageLength": 25,
             "language": {
