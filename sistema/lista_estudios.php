@@ -116,7 +116,8 @@ $('.tablaEstudios').load('tablas/tablaEstudios.php')
 				$('#citassaeliminar').html(r);
 				
 			}
-		});
+		})
+    </script>
     <script type="text/javascript">
 	$(document).ready(function(){
 		$('.fecha').val();
@@ -147,7 +148,7 @@ $('.tablaEstudios').load('tablas/tablaEstudios.php')
 		
 	}
 </script>
-<!-- ************************************* -->
+
     <script>
     function openCorte(atributo, menutab) {
       var i, tabcontent, tablinks;

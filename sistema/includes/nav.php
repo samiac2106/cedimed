@@ -21,12 +21,20 @@
 					<a href=\"lista_admisiones.php\">Admisiones</a>
 					 
 				</li>
+				<li>
+					<a href=\"\">Contigencia</a>
+						<ul>
+							<li><a href=\"listaContingencia.php\">Pacientes Contigencia</a></li>
+							
 					";
 				}
 				
 				
 				if($_SESSION['idrol']==1){
 					echo "
+					<li><a href=\"graficos.php\">Estadistica</a></li>
+					</ul> 
+					</li>
 					<li >
 					<a href=\"instructivo.php\">Instructivo</a>
 				</li>

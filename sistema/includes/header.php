@@ -1,9 +1,9 @@
 
 <?php
 
-if (empty($_SESSION['active'])){
+/* if (empty($_SESSION['active'])){
   header('location: ../');
-}
+} */
 ?>
 <style>
 

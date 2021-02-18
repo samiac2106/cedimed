@@ -212,3 +212,84 @@ function ingresarEmpleado(){
          }
     })
  }
+
+//CONTINGENCIA
+//Agregar contingencia
+ function guardarContingencia() {
+    $.ajax({
+          type: "POST",
+          url: "php/registrarContingencia.php",
+          data: $('#registrarContingencia').serialize(),
+          datatype:"json",
+          success: function (data){
+             if(data==1){
+              Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Datos Ingresados!!!!',
+                  showConfirmButton: false,
+                  timer: 1500
+                }).then((result)=>{
+                  window.location.reload();
+                });
+                $('#documento').focus();
+                
+             }else{
+              Swal.fire({
+                  position: 'top-end',
+                  icon: 'error',
+                  title: 'Error al ingresar datos!!!!',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+             }
+          }
+      });
+  }
+  //Ingresar datos al formulario de editar
+  function formEditarContingencia(data){
+     
+      d=data.split('||');
+      $('.idConsulta').val(d[0]);
+      $('.documento').val(d[1]);
+      $('.nombre').val(d[2]);
+      $('.apellido').val(d[3]);
+      $('.telefono').val(d[4]);
+      $('.entidad').val(d[5]);
+      $('.modalidad').val(d[6]);
+      $('.estudio').val(d[7]);
+      $('.observaciones').val(d[8]);
+      $('.estado').val(d[9]);
+      
+  }
+  //Editar contingencia
+  function editarContingencia() {
+    $.ajax({
+          type: "POST",
+          url: "php/editarContingencia.php",
+          data: $('#editarContingencia').serialize(), //modal
+          datatype:"json",
+          success: function (data){
+            console.log(data);
+             if(data==1){
+              Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Consulta Editada!!!!',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                $('.tablaContingencia').load('tablas/tablaContingencia.php');
+                
+             }else{
+              Swal.fire({
+                  position: 'top-end',
+                  icon: 'error',
+                  title: 'Error al editar Consulta!!!!',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+             }
+          }
+      });
+  }
