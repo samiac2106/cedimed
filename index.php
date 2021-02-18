@@ -57,7 +57,7 @@ if (!empty($_POST)){
      <SEction id="container">
 
          <form id="inicio" action="" method="post">
-             <h3>Inicio</h3>
+             <h3>Inicio de sesion </h3>
              <img src="img/cedimed.png" alt="Login_cedimed">
 
              <div>
