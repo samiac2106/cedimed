@@ -166,7 +166,7 @@ include "../../conexion.php";
                             data-toggle="modal" style="text-decoration: none;"><?php echo $data['gestion_pendiente'];?>
                     </td>
                     <td><a class="emergente4 link_edit" href="#" gestion="<?php echo $data['nro_cita'];?>"
-                            data-toggle="modal" style="text-decoration: none;"><span class="glyphicon glyphicon-pencil"
+                            data-toggle="modal" style="text-decoration: none;">gestion<span class="glyphicon glyphicon-pencil"
                                 aria-hidden="true"></span></a>
                         <?php
                     if ($usuario_id==$usuario || $rol_id==1){?>

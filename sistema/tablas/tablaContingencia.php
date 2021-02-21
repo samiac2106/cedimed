@@ -17,11 +17,11 @@ $contingencias = $conectar->consultarDatos($consultaSQL);
         <th>idConsulta</th>
             <th>Documento</th>
             <th>Nombres</th>
-            <th>Apellidos</th>
             <th>Teléfonos</th>
             <th>Entidad</th>
             <th>Modalidad</th>
             <th>Estudios</th>
+            <th>Parte del cuerpo</th>
             <th>Asesor</th>
             <th>Observaciones</th>
             <th>Fecha</th>
@@ -32,12 +32,12 @@ $contingencias = $conectar->consultarDatos($consultaSQL);
         <tr>
         <th>idConsulta</th>
             <th>Documento</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
+            <th>Nombres</th>            
             <th>Teléfonos</th>
             <th>Entidad</th>
             <th>Modalidad</th>
             <th>Estudios</th>
+            <th>Parte del cuerpo</th>
             <th>Asesor</th>
             <th>Observaciones</th>
             <th>Fecha</th>
@@ -57,16 +57,16 @@ $contingencias = $conectar->consultarDatos($consultaSQL);
             <tr>
             <td><?php echo ($contingencia['id_consulta']);  ?></td>
                 <td><?php echo ($contingencia['documento']);  ?></td>
-                <td><?php echo ($contingencia['nombres']);  ?></td>
-                <td><?php echo ($contingencia['apellidos']);   ?></td>
+                <td><?php echo ($contingencia['nombres']);  ?></td>                
                 <td><?php echo ($contingencia['telefonos']);  ?></td>
                 <td><?php echo ($contingencia['nombre_entidad']);  ?></td>
                 <td><?php echo ($contingencia['nombre_mod']);  ?></td>
                 <td><?php echo ($contingencia['nombre_estudio']);  ?></td>
+                <td><?php echo ($contingencia['apellidos']);   ?></td>
                 <td><?php echo ($contingencia['nombre_asesor']);   ?></td>
                 <td><?php echo ($contingencia['observaciones']);   ?></td>
                 <td><?php echo ($contingencia['fecha_ingreso']);   ?></td>
-                <td><a href="" data-toggle="modal" data-target="#editarModal" onclick="formEditarContingencia('<?php echo ($datos);?>')">Editar</a></td>
+                <td><a href="" data-toggle="modal" data-target="#editarModal" ><i class="" onclick="formEditarContingencia('<?php echo ($datos);?>')">Editar</i></a></td>
             </tr>
             
 

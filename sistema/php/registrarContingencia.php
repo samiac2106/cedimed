@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $documento=$_POST['documento'];
 $nombres=$_POST['nombre'];
 $apellidos=$_POST['apellido'];
@@ -6,7 +8,7 @@ $telefonos=$_POST['telefono'];
 $entidad=$_POST['entidad'];
 $modalidad=$_POST['modalidad'];
 $estudio=$_POST['estudio'];
-$asesor=$_POST['asesor'];
+$asesor=$_SESSION['iduser'];
 $observaciones=$_POST['observaciones'];
 
 include ("../conexion.php");
