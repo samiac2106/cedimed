@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../db/Conexion.php");
+include "../db/Conexion.php";
 $conectar = new Conexion();
 
 if (empty($_SESSION['active'])) {
@@ -20,59 +20,105 @@ if (empty($_SESSION['active'])) {
   <link rel="shortcut icon" href="../img/icono-cedimed.png" />
 
   <title>INICIO | </title>
-  <?php include("includes/scriptsUp.php") ?>
+  <?php include "includes/scriptsUp.php" ?>
 </head>
 
 <body class="nav-md">
   <div class="container body">
     <div class="main_container">
-    <?php include("includes/navBar.php") ?>
-<!-- page content -->
-<div class="right_col" role="main">
-        <!-- top tiles -->
-        <div class="row" style="display: inline-block;">
-        <center><h1><?php if($_SESSION['sexo']=='hombre'){echo "Bienvenido";}else{echo "Bienvenida";}?> al Sistema de Copagos Cedimed</h1></center>
-        <div class="col-12">
-        <img src="../img/sedes.png" alt="">
-        </div>
-        
-          <!-- <div class="tile_count">
+      <?php include "includes/navBar.php" ?>
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <center>
+          <h1 class="mb-5"><?php if ($_SESSION['sexo'] == 'hombre') {
+                echo "Bienvenido";
+              } else {
+                echo "Bienvenida";
+              } ?> al Sistema de Copagos Cedimed</h1>
+
+          <!-- top tiles -->
+          <hr>
+          <div class=" tile_count mt-5 ">
+            <div class="col-md-6 col-sm-4  tile_stats_count">
+              <span class="count"></i>General Copago</span>
+            </div>
+            <div class="col-md-6 col-sm-4  tile_stats_count">
+              <div class="count">General Admisiones</div>
+            </div>
+          </div>
+
+
+          <div class="tile_count">
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">2500</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+              <span class="count_top"></i> Total Citas</span>
+              <?php
+              $consultaSQL = "SELECT count(nro_cita) as 'count' FROM cita WHERE estadocita<2";
+              $result = $conectar->consultarDatos($consultaSQL);
+              $totalCitas = $result[0]['count'];
+              ?>
+              <div class="count"><?php echo $totalCitas ?></div>
+
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-              <div class="count">123.50</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+              <span class="count_top">Total Espera</span>
+              <?php
+              $consultaSQL = "SELECT count(nro_cita) as 'count' FROM cita WHERE estadocita=0";
+              $result = $conectar->consultarDatos($consultaSQL);
+              $totalEspera = $result[0]['count'];
+              ?>
+              <div class="count"><?php echo $totalEspera ?></div>
+              <span class="count_bottom font-italic"><?php echo round($totalEspera / $totalCitas * 100, 2) ?>%</span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-              <div class="count green">2,500</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top">Total P.P</span>
+              <?php
+              $consultaSQL = "SELECT count(nro_cita) as 'count' FROM cita WHERE estadocita=1";
+              $result = $conectar->consultarDatos($consultaSQL);
+              $totalPendiente = $result[0]['count'];
+              ?>
+              <div class="count"><?php echo $totalPendiente ?></div>
+              <span class="count_bottom font-italic"><?php echo round($totalPendiente / $totalCitas * 100, 2) ?>%</span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-              <div class="count">4,567</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+              <span class="count_top">Espera Adminsiones</span>
+              <?php
+              $consultaSQL = "SELECT count(ci.nro_cita) as 'count' FROM cita ci INNER JOIN admisiones ad 
+                            ON ad.num_cita=ci.nro_cita WHERE ad.estado=0 AND ci.estadocita<2";
+              $result = $conectar->consultarDatos($consultaSQL);
+              $esperaAdminisiones = $result[0]['count'];
+              ?>
+              <div class="count"><?php echo $esperaAdminisiones ?></div>
+              <span class="count_bottom font-italic"><?php echo round($esperaAdminisiones / $totalCitas * 100, 2) ?>%</span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-              <div class="count">2,315</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top">Pendiente Adminisiones</span>
+              <?php
+              $consultaSQL = "SELECT count(ci.nro_cita) as 'count' FROM cita ci INNER JOIN admisiones ad 
+                            ON ad.num_cita=ci.nro_cita WHERE ad.estado=1 AND ci.estadocita<2";
+              $result = $conectar->consultarDatos($consultaSQL);
+              $pendienteAdminisiones = $result[0]['count'];
+              ?>
+              <div class="count"><?php echo $pendienteAdminisiones ?></div>
+              <span class="count_bottom font-italic"><?php echo round($pendienteAdminisiones / $totalCitas * 100, 2) ?>%</span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">7,325</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top">Gestionado Adminsiones</span>
+              <?php
+              $consultaSQL = "SELECT count(ci.nro_cita) as 'count' FROM cita ci INNER JOIN admisiones ad 
+                            ON ad.num_cita=ci.nro_cita WHERE ad.estado=2 AND ci.estadocita<2";
+              $result = $conectar->consultarDatos($consultaSQL);
+              $gestionadoAdminisiones = $result[0]['count'];
+              ?>
+              <div class="count"><?php echo $gestionadoAdminisiones ?></div>
+              <span class="count_bottom font-italic"><?php echo round($gestionadoAdminisiones / $totalCitas * 100, 2) ?>%</span>
             </div>
-          </div> -->
-        </div>
+          </div>
+
+        </center>
       </div>
     </div>
   </div>
-  <?php include("includes/scriptsDown.php") ?>
+  <?php include "includes/scriptsDown.php" ?>
 </body>
 
 </html>
