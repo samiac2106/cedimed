@@ -2,7 +2,7 @@
 session_start();
 include("conexion.php");
 include("../db/Conexion.php");
-$conectar = new ConexionContingencia();
+$conexion = new ConexionContingencia();
 
 if (empty($_SESSION['active'])) {
     header('location: ../');
@@ -28,6 +28,7 @@ if (empty($_SESSION['active'])) {
     <div class="container body">
         <div class="main_container">
             <?php include("includes/navBar.php") ?>
+            
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="tablaContingencia"></div>
@@ -70,7 +71,7 @@ if (empty($_SESSION['active'])) {
                                 <option disabled selected value="">Seleccione Una Opción</option>
                                 <?php
                                 $consultaSQL = "SELECT * FROM entidad";
-                                $entidades = $conectar->consultarDatos($consultaSQL);
+                                $entidades = $conexion->consultarDatos($consultaSQL);
                                 foreach ($entidades as $entidad) :
                                 ?>
                                     <option value="<?php echo ($entidad['id_entidad']) ?>"><?php echo ($entidad['nombre_entidad']) ?></option>
@@ -85,7 +86,7 @@ if (empty($_SESSION['active'])) {
                                 <option disabled selected value="">Seleccione Una Opción</option>
                                 <?php
                                 $consultaSQL = "SELECT * FROM modalidad";
-                                $modalidades = $conectar->consultarDatos($consultaSQL);
+                                $modalidades = $conexion->consultarDatos($consultaSQL);
                                 foreach ($modalidades as $modalidad) :
                                 ?>
                                     <option value="<?php echo ($modalidad['id_modalidad']) ?>"><?php echo ($modalidad['nombre_mod']) ?></option>
@@ -100,7 +101,7 @@ if (empty($_SESSION['active'])) {
                                 <option disabled selected value="">Seleccione Una Opción</option>
                                 <?php
                                 $consultaSQL = "SELECT * FROM estudios";
-                                $estudios = $conectar->consultarDatos($consultaSQL);
+                                $estudios = $conexion->consultarDatos($consultaSQL);
                                 foreach ($estudios as $estudio) :
                                 ?>
                                     <option value="<?php echo ($estudio['id_estudio']) ?>"><?php echo ($estudio['nombre_estudio']) ?></option>
@@ -164,7 +165,7 @@ if (empty($_SESSION['active'])) {
 
                                 <?php
                                 $consultaSQL = "SELECT * FROM entidad";
-                                $entidades = $conectar->consultarDatos($consultaSQL);
+                                $entidades = $conexion->consultarDatos($consultaSQL);
                                 foreach ($entidades as $entidad) :
                                 ?>
                                     <option value="<?php echo ($entidad['id_entidad']) ?>"><?php echo ($entidad['nombre_entidad']) ?></option>
@@ -179,7 +180,7 @@ if (empty($_SESSION['active'])) {
 
                                 <?php
                                 $consultaSQL = "SELECT * FROM modalidad";
-                                $modalidades = $conectar->consultarDatos($consultaSQL);
+                                $modalidades = $conexion->consultarDatos($consultaSQL);
                                 foreach ($modalidades as $modalidad) :
                                 ?>
                                     <option value="<?php echo ($modalidad['id_modalidad']) ?>"><?php echo ($modalidad['nombre_mod']) ?></option>
@@ -192,7 +193,7 @@ if (empty($_SESSION['active'])) {
                             <select name="estudio" id="estudio" name="estudio" class="custom-select estudio">
                                 <?php
                                 $consultaSQL = "SELECT * FROM estudios";
-                                $estudios = $conectar->consultarDatos($consultaSQL);
+                                $estudios = $conexion->consultarDatos($consultaSQL);
                                 foreach ($estudios as $estudio) :
                                 ?>
                                     <option value="<?php echo ($estudio['id_estudio']) ?>"><?php echo ($estudio['nombre_estudio']) ?></option>

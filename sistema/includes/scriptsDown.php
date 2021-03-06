@@ -43,5 +43,7 @@
 
   <!-- Custom Theme Scripts -->
   <script src="../build/js/custom.min.js"></script>
-  <script src="js/scriptss.js"></script>
+  <script src="js/scriptsss.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+
+

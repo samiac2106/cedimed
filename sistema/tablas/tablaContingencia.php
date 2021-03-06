@@ -1,7 +1,7 @@
 <?php
 
 include('../conexion.php');
-$conectar = new ConexionContingencia();
+$conexion = new ConexionContingencia();
 
 $consultaSQL =   "SELECT * FROM pacientes_modalidad pm
                 INNER JOIN entidad en ON en.id_entidad=pm.entidad
@@ -9,7 +9,7 @@ $consultaSQL =   "SELECT * FROM pacientes_modalidad pm
                 INNER JOIN modalidad mo ON mo.id_modalidad=pm.modalidad
                 INNER JOIN asesores ase ON ase.id_asesor=pm.asesor 
                 WHERE  pm.estado=0";
-$contingencias = $conectar->consultarDatos($consultaSQL);
+$contingencias = $conexion->consultarDatos($consultaSQL);
 ?>
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">

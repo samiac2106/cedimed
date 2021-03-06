@@ -2,7 +2,7 @@
 session_start();
 include("conexion.php");
 include("../db/Conexion.php");
-$conectar = new ConexionContingencia();
+$conexion = new ConexionContingencia();
 
 if (empty($_SESSION['active'])) {
     header('location: ../');
@@ -38,7 +38,7 @@ if (empty($_SESSION['active'])) {
                         <?php
                      
                         $consultaSQL = "SELECT * FROM modalidad";
-                        $modalidades = $conectar->consultarDatos($consultaSQL);
+                        $modalidades = $conexion->consultarDatos($consultaSQL);
                         foreach ($modalidades as $modalidad) :
                         ?>
                             <option value="<?php echo ($modalidad['id_modalidad']) ?>"><?php echo ($modalidad['nombre_mod']) ?></option>
@@ -60,7 +60,7 @@ if (empty($_SESSION['active'])) {
    
     <script>
         $(document).ready(function() {
-            $('.graficos').load('graficos/barChartGeneral.php');
+            $('.graficos').load('graficos/barChartContingencia.php');
 
             $('#modalidad').change(function(data) {
                 var idModalidad="id="+$('#modalidad').val();

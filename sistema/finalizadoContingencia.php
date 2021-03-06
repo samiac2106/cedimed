@@ -2,7 +2,7 @@
 session_start();
 include("conexion.php");
 include("../db/Conexion.php");
-$conectar = new ConexionContingencia();
+$conexion = new ConexionContingencia();
 
 if (empty($_SESSION['active'])) {
     header('location: ../');
@@ -88,7 +88,7 @@ if (empty($_SESSION['active'])) {
                                 INNER JOIN modalidad mo ON mo.id_modalidad=pm.modalidad
                                 INNER JOIN asesores ase ON ase.id_asesor=pm.asesor 
                                 WHERE  pm.estado=1";
-                $contingencias = $conectar->consultarDatos($consultaSQL);
+                $contingencias = $conexion->consultarDatos($consultaSQL);
                                 
                                 foreach ($contingencias as $contingencia) :
                                     $datos = $contingencia['id_consulta'] . "||" . $contingencia['documento'] . "||" . $contingencia['nombres'] . "||"

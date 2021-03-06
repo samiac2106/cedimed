@@ -12,13 +12,13 @@ $id_consulta=$_POST['idConsulta'];
 
 include ("../conexion.php");
 
-$conectar= new ConexionContingencia();
+$conexion= new ConexionContingencia();
 
 $consultaSQL=("UPDATE pacientes_modalidad SET documento='$documento', nombres='$nombres', apellidos='$apellidos', 
 telefonos='$telefonos',entidad='$entidad', estudio='$estudio', modalidad='$modalidad', observaciones='$observaciones',
  estado='$estado'
 WHERE id_consulta='$id_consulta'");
 
-$ejecutar=$conectar->editarDatos($consultaSQL);
+$ejecutar=$conexion->editarDatos($consultaSQL);
 echo $ejecutar;
 

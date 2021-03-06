@@ -13,10 +13,10 @@ $observaciones=$_POST['observaciones'];
 
 include ("../conexion.php");
 
-$conectar= new ConexionContingencia();
+$conexion= new ConexionContingencia();
 $consultaSQL=("INSERT INTO pacientes_modalidad(documento, nombres, apellidos, telefonos, entidad, estudio, modalidad, asesor, observaciones)
                      VALUES ('$documento','$nombres','$apellidos','$telefonos',$entidad,$estudio,$modalidad,$asesor,'$observaciones');");
-$ejecutar=$conectar->agregarDatos($consultaSQL);
+$ejecutar=$conexion->agregarDatos($consultaSQL);
 
 echo $ejecutar;
 

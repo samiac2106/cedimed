@@ -4,7 +4,7 @@
       <a href="index.php" class="site_title"><img src="../img/cedimed-icono.png" alt=""> <span>Cedimed</span></a>
     </div>
 
-    <div class="clearfix"></div>
+    
 
     <br />
 
@@ -52,22 +52,7 @@
         </ul>
 
       </div>
-      <?php if ($_SESSION['idrol'] == 1) :  ?>
-
-
-        <div class="menu_section">
-          <h3>Administrador</h3>
-          <ul class="nav side-menu">
-            <li><a href="#"><i class="fa fa-bug"></i> Lista empleados </a></li>
-            <li><a href="#"><i class="fa fa-bug"></i> Lista entidades </a></li>
-            <li><a href="#"><i class="fa fa-bug"></i> Lista estudios </a></li>
-            <li><a href="#"><i class="fa fa-bug"></i> Eliminar citas </a></li>
-            <li><a href="#"><i class="fa fa-bug"></i> Editar Menu </a></li>
-
-
-          </ul>
-        </div>
-      <?php endif ?>
+      
 
     </div>
     <!-- /sidebar menu -->
@@ -82,10 +67,10 @@
       <a data-toggle="tooltip" data-placement="top" title="Settings">
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
       </a>
-      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+      <a data-toggle="tooltip" data-placement="top" id="view-fullscreen" title="Pantalla Completa" href="#">
         <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
       </a>
-      <a data-toggle="tooltip" data-placement="top" title="Lock">
+      <a data-toggle="tooltip" data-placement="top" title="Lock" >
         <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
       </a>
       <a data-toggle="tooltip" data-placement="top" title="Salir" href="../db/logout.php">
@@ -138,6 +123,7 @@
               <select name="tipo" class="custom-select" id="tipo">
 
                 <?php
+                $conectar =new Conexion();
                 $consultaSQL = "SELECT * FROM tipo_documento ORDER BY tipo";
                 $tipos = $conectar->consultarDatos($consultaSQL);
                 foreach ($tipos as $tipo) :
@@ -149,22 +135,22 @@
             </div>
             <div class="form-group col-9">
               <label for="documento">Nro de documento</label>
-              <input type="number" class="form-control" id="documento" name="documento">
+              <input type="number" class="form-control"  name="documento">
             </div>
           </div>
 
           <div class="form-group">
             <label for="nombres">Nombres y Apellidos</label>
-            <input type="text" class="form-control" id="nombres" name="nombres">
+            <input type="text" class="form-control" name="nombres">
           </div>
           <div class="form-group">
             <label for="telefonos">Teléfonos</label>
-            <input type="text" class="form-control" id="telefonos" name="telefonos">
+            <input type="text" class="form-control"  name="telefonos">
           </div>
 
           <div class="form-group">
             <label for="estudio">Estudio</label>
-            <input list="listaEstudio" name="estudio" id="estudio" class="form-control estudio">
+            <input list="listaEstudio" name="estudio"  class="form-control estudio">
             <datalist id="listaEstudio">
 
               <?php
@@ -179,7 +165,7 @@
 
           <div class="form-group">
             <label for="entidad">Entidad</label>
-            <input list="listaEntidad" name="entidad" id="entidad" class="form-control entidad">
+            <input list="listaEntidad" name="entidad"  class="form-control entidad">
             <datalist id="listaEntidad">
 
               <?php
@@ -194,7 +180,7 @@
 
           <div class="form-group">
             <label for="vigencia">Vigencia Orden Medica</label>
-            <input type="text" class="form-control" id="vigencia" name="vigencia">
+            <input type="text" class="form-control"  name="vigencia">
           </div>
           <div class="form-group">
             <label for="arl">ARL: Codigo - Nombre del médico y fecha de la orden </label>
@@ -202,11 +188,11 @@
           </div>
           <div class="form-group">
             <label for="fecha">Fecha de la cita</label>
-            <input type="date" class="form-control" id="fecha" name="fecha">
+            <input type="date" class="form-control"  name="fecha">
           </div>
           <div class="form-group">
             <label for="observaciones">Observaciones</label>
-            <textarea name="observaciones" class="form-control" id="observaciones" name="observaciones"></textarea>
+            <textarea name="observaciones" class="form-control" name="observaciones"></textarea>
           </div>
           <div class="form-group">
             <select name="estado" id="estado" class="form-control">

@@ -2,12 +2,12 @@
 $idModalidad=$_POST['id'];
 
 include("../conexion.php");
-$conectar= new ConexionContingencia();
+$conexion= new ConexionContingencia();
 $ejeX=array();
 $ejeY=array();
 $repetir=0;
 $consultaSQL="SELECT * FROM pacientes_modalidad WHERE modalidad=$idModalidad order by estudio";
-$estudios=$conectar->consultarDatos($consultaSQL);
+$estudios=$conexion->consultarDatos($consultaSQL);
 foreach($estudios as $estudio){
     
     $idEstudio=$estudio['estudio'];
@@ -15,11 +15,11 @@ foreach($estudios as $estudio){
     if($repetir!=$idEstudio){
         $repetir=$idEstudio;
         $consultaSQL="SELECT * FROM estudios WHERE id_estudio=$idEstudio";
-        $result=$conectar->consultarDatos($consultaSQL);
+        $result=$conexion->consultarDatos($consultaSQL);
         $ejeX[]=$result[0]['nombre_estudio'];
 
         $consultaSQL="SELECT count(estudio)  as 'contar'FROM pacientes_modalidad WHERE estudio=$idEstudio and modalidad=$idModalidad AND estado=0";
-        $result=$conectar->consultarDatos($consultaSQL);
+        $result=$conexion->consultarDatos($consultaSQL);
         $ejeY[]=$result[0]['contar'];
     }
     
@@ -52,11 +52,11 @@ var trace1 = {
   text: yValue.map(String),
   textposition: 'auto',
     marker: {
-    color: 'rgb(158,202,225)',
+    color: '#2a3f54',
     opacity: 0.8,
     line: {
-      color: 'rgb(8,48,107)',
-      width: 1.5
+      color: '#22142b',
+      width: 2
     }
   }
 };

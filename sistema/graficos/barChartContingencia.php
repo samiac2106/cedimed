@@ -1,14 +1,14 @@
 <?php
 include("../conexion.php");
-$conectar= new ConexionContingencia();
+$conexion= new ConexionContingencia();
 $ejeX=array();
 $ejeY=array();
 $consultaSQL="SELECT * FROM modalidad";
-$modalidades=$conectar->consultarDatos($consultaSQL);
+$modalidades=$conexion->consultarDatos($consultaSQL);
 foreach($modalidades as $modalidad){
     $idMod=$modalidad['id_modalidad'];
     $consultaSQL="SELECT count(modalidad) as 'contar'FROM pacientes_modalidad WHERE modalidad=$idMod and estado=0";
-    $result=$conectar->consultarDatos($consultaSQL);
+    $result=$conexion->consultarDatos($consultaSQL);
     $ejeY[]=$result[0]['contar'];
     $ejeX[]=$modalidad['nombre_mod'];
 }
@@ -40,11 +40,11 @@ var trace1 = {
   text: yValue.map(String),
   textposition: 'auto',
   marker: {
-    color: 'rgb(158,202,225)',
+    color: '#2a3f54',
     opacity: 0.8,
     line: {
-      color: 'rgb(8,48,107)',
-      width: 1.5
+      color: '#22142b',
+      width: 2
     }
   }
 };
