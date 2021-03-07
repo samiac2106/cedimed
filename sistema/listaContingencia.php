@@ -28,7 +28,7 @@ if (empty($_SESSION['active'])) {
     <div class="container body">
         <div class="main_container">
             <?php include("includes/navBar.php") ?>
-            
+
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="tablaContingencia"></div>
@@ -38,9 +38,9 @@ if (empty($_SESSION['active'])) {
 
     <?php include("includes/scriptsDown.php") ?>
 
- <!-- modarl para registrar contingencia -->
+    <!-- modarl para registrar contingencia -->
 
- <div class="modal fade" id="ingresarContingencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ingresarContingencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -113,18 +113,17 @@ if (empty($_SESSION['active'])) {
                             <label for="apellido">Parte del cuerpo </label>
                             <input type="text" class="form-control" id="apellido" name="apellido">
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="observaciones">Observaciones </label>
                             <textarea name="observaciones" class="form-control" id="observaciones" cols="30" rows="10"></textarea>
                         </div>
-                        
+
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="guardarContingencia()">Guardar Cambios</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-
+                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                   <button type="button" class="btn btn-dark" data-dismiss="modal" onclick="guardarContingencia()">Guardar</button>
                 </div>
             </div>
         </div>
@@ -153,7 +152,7 @@ if (empty($_SESSION['active'])) {
                             <label for="nombre">Nombres </label>
                             <input type="text" class="form-control nombre" id="nombre" name="nombre">
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="telefono">Teléfonos </label>
                             <input type="text" class="form-control telefono" id="telefono" name="telefono">
@@ -223,15 +222,16 @@ if (empty($_SESSION['active'])) {
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="editarContingencia()">Guardar Cambios</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" onclick="editarContingencia()">Guardar</button>
+
 
                 </div>
             </div>
         </div>
     </div>
 
-  
+
     <script>
         $(document).ready(function() {
             $('.tablaContingencia').load('tablas/tablaContingencia.php');
@@ -243,7 +243,7 @@ if (empty($_SESSION['active'])) {
                 width: 450,
             });
 
-           $('#modalidad').change(function(data) {
+            $('#modalidad').change(function(data) {
                 var idModalidad = "id=" + $('#modalidad').val();
 
                 $.ajax({

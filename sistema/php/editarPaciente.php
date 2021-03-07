@@ -15,6 +15,8 @@ $arl=$_POST['arl'];
 $fecha=$_POST['fecha'];
 $observaciones=$_POST['observaciones'];
 $estado=$_POST['estado'];
+$parteCuerpo=$_POST['parteCuerpo'];
+$urgente=$_POST['urgente'];
 
 /* traer  id del estudio seleccionado */
 $consultaSQL="SELECT * FROM estudios WHERE nombre_estudio='$estudio'";
@@ -29,7 +31,7 @@ $entidad=$result[0]['id'];
 /* Editar datos del paciente */
 $consultaSQL="UPDATE cita SET identificacion='$documento', tipo_doc='$tipo', nombre='$nombre', telefono='$telefono', 
 entidad='$entidad', vigencia_orden='$vigencia', fecha_cita='$fecha', estadocita='$estado', observaciones='$observaciones', estudio='$estudio', 
-arl_codigo='$arl', fecha_actualizacion=current_timestamp() WHERE nro_cita='$num_cita'";
+arl_codigo='$arl',parte_cuerpo='$parteCuerpo', urgencia='$urgente', fecha_actualizacion=current_timestamp() WHERE nro_cita='$num_cita'";
   $editar=$conectar->editarDatos($consultaSQL);
 
  

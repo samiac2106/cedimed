@@ -4,18 +4,19 @@
       <a href="index.php" class="site_title"><img src="../img/cedimed-icono.png" alt=""> <span>Cedimed</span></a>
     </div>
 
-    
+
 
     <br />
 
     <!-- sidebar menu -->
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
       <div class="menu_section">
-        <h3>General</h3>
+      <br><br><br>
+        <h3 class="mt-5">General</h3>
         <ul class="nav side-menu">
           <li><a href="convenio.php"><i class="glyphicon glyphicon-search"></i> Convenio Entidades </a></li>
           <?php if ($_SESSION['idrol'] == 2 || $_SESSION['idrol'] == 1) : ?>
-            <li><a href="#"><i class="fa fa-edit"></i> Copagos <span class="fa fa-chevron-down"></span></a>
+            <li><a href="#"><i class="glyphicon glyphicon-earphone"></i> Copagos <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="listaGeneralCopago.php">General</a></li>
                 <li><a href="listaEsperaCopago.php">Espera</a></li>
@@ -27,7 +28,7 @@
 
           <?php if ($_SESSION['idrol'] == 3 || $_SESSION['idrol'] == 1) :  ?>
 
-            <li><a href="#"><i class="fa fa-desktop"></i> Admisiones <span class="fa fa-chevron-down"></span></a>
+            <li><a href="#"><i class="glyphicon glyphicon-user"></i> Admisiones <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="listaGeneralAdmisiones.php">General</a></li>
                 <li><a href="listaEsperaAdmisiones.php">Espera</a></li>
@@ -36,7 +37,7 @@
             </li>
           <?php endif ?>
           <?php if ($_SESSION['idrol'] == 2 || $_SESSION['idrol'] == 1) :  ?>
-            <li><a><i class="fa fa-male"></i> Contingencia <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-sign-in"></i> Contingencia <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="listaContingencia.php">Pacientes Contingencia</a></li>
                 <li><a href="finalizadoContingencia.php">Finalizados Contingencia</a></li>
@@ -52,7 +53,7 @@
         </ul>
 
       </div>
-      
+
 
     </div>
     <!-- /sidebar menu -->
@@ -70,7 +71,7 @@
       <a data-toggle="tooltip" data-placement="top" id="view-fullscreen" title="Pantalla Completa" href="#">
         <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
       </a>
-      <a data-toggle="tooltip" data-placement="top" title="Lock" >
+      <a data-toggle="tooltip" data-placement="top" title="Lock">
         <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
       </a>
       <a data-toggle="tooltip" data-placement="top" title="Salir" href="../db/logout.php">
@@ -90,7 +91,7 @@
     <nav class="nav navbar-nav">
       <ul class=" navbar-right">
         <li class="nav-item dropdown open" style="padding-left: 15px;">
-          <a href="javascript:;" class="user-profile text-uppercase">
+          <a class="user-profile text-uppercase">
             <?php echo ($_SESSION['nombre'] . " (" . $_SESSION['rol'] . ")") ?>
           </a>
 
@@ -105,12 +106,13 @@
 
 <!-- /top tiles -->
 
-<!-- Modal Registrar -->
+<!-- Modal Registrar Paciente-->
 <div class="modal fade" id="registrarPaciente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar Paciente</h5>
+        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Registrar Paciente</h5>
+        <div><span class="font-weight-bold">Nota:</span> Para generar una <b>CONSULTA</b>, solo ingrese datos en observaciones</div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -120,10 +122,10 @@
           <div class="row">
             <div class="form- col-3">
               <label for="tipo">Tipo </label>
-              <select name="tipo" class="custom-select" id="tipo">
+              <select name="tipo" class="form-control" id="tipo">
 
                 <?php
-                $conectar =new Conexion();
+                $conectar = new Conexion();
                 $consultaSQL = "SELECT * FROM tipo_documento ORDER BY tipo";
                 $tipos = $conectar->consultarDatos($consultaSQL);
                 foreach ($tipos as $tipo) :
@@ -135,7 +137,7 @@
             </div>
             <div class="form-group col-9">
               <label for="documento">Nro de documento</label>
-              <input type="number" class="form-control"  name="documento">
+              <input type="number" class="form-control" name="documento">
             </div>
           </div>
 
@@ -145,12 +147,122 @@
           </div>
           <div class="form-group">
             <label for="telefonos">Teléfonos</label>
-            <input type="text" class="form-control"  name="telefonos">
+            <input type="text" class="form-control" name="telefonos">
           </div>
 
           <div class="form-group">
             <label for="estudio">Estudio</label>
-            <input list="listaEstudio" name="estudio"  class="form-control estudio">
+            <select name="estudio" class="select2 form-control">
+              <?php
+              $consultaSQL = "SELECT * FROM estudios order by nombre_estudio ASC";
+              $estudios = $conectar->consultarDatos($consultaSQL);
+              foreach ($estudios as $estudio) :
+              ?>
+                <option value="<?php echo ($estudio['id_estudio']) ?>"><?php echo ($estudio['nombre_estudio']) ?></option>
+              <?php endforeach ?>
+            </select>
+
+          </div>
+          <div class="form-group">
+            <label for="parteCuerpo">Parte del Cuerpo</label>
+            <textarea name="parteCuerpo" id="parteCuerpo" class="form-control" cols="30" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="entidad">Entidad</label>
+            <select name="entidad" class="select2 form-control">
+              <?php
+              $consultaSQL = "SELECT * FROM entidad order by nombre ASC";
+              $entidades = $conectar->consultarDatos($consultaSQL);
+              foreach ($entidades as $entidad) :
+              ?>
+                <option value="<?php echo ($entidad['id']) ?>"><?php echo ($entidad['nombre']) ?></option>
+              <?php endforeach ?>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="vigencia">Vigencia Orden Medica</label>
+            <input type="text" class="form-control" name="vigencia">
+          </div>
+          <div class="form-group">
+            <label for="arl">ARL: Codigo - Nombre del médico y fecha de la orden </label>
+            <input type="text" class="form-control" id="arl" name="arl">
+          </div>
+          <div class="form-group">
+            <label for="fecha">Fecha de la cita</label>
+            <input type="date" class="form-control" name="fecha">
+          </div>
+          <div class="form-group">
+            <label for="observaciones">Observaciones</label>
+            <textarea name="observaciones" class="form-control" name="observaciones"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Estados del Ingreso</label>
+            <select name="estado" id="estado" class="form-control">
+              <option value="0">Admisiones</option>
+              <option value="3">Pendiente Personal</option>
+            </select>
+            <select name="urgente" id="urgente" class="form-control">
+              <option value="0"></option>
+              <option value="1">Urgente</option>
+            </select>
+            Las urgencias serán resaltadas en rojo.
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-dark" onclick="ingresarPaciente()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Editar Paciente -->
+<div class="modal fade" id="editarPaciente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Paciente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditarPaciente">
+          <div class="row">
+            <div class="form- col-3">
+              <label for="tipo">Tipo </label>
+              <input type="hidden" name="nro_cita" class="nro_cita">
+              <select name="tipo" class="custom-select tipo" id="tipo">
+                <?php
+                $consultaSQL = "SELECT * FROM tipo_documento ORDER BY tipo";
+                $tipos = $conectar->consultarDatos($consultaSQL);
+                foreach ($tipos as $tipo) :
+                ?>
+                  <option value="<?php echo ($tipo['num']) ?>"><?php echo ($tipo['tipo']) ?></option>
+                <?php endforeach ?>
+              </select>
+
+            </div>
+            <div class="form-group col-9">
+              <label for="documento">Nro de documento</label>
+              <input type="number" class="form-control documento" id="documento" name="documento">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nombres">Nombres y Apellidos</label>
+            <input type="text" class="form-control nombres" id="nombres" name="nombres">
+          </div>
+          <div class="form-group">
+            <label for="telefonos">Teléfonos</label>
+            <input type="text" class="form-control telefonos" id="telefonos" name="telefonos">
+          </div>
+          <div class="form-group">
+            <label for="estudio">Estudio</label>
+            <input list="listaEstudio" name="estudio" id="estudio" class="form-control estudio">
             <datalist id="listaEstudio">
 
               <?php
@@ -162,50 +274,111 @@
               <?php endforeach ?>
             </datalist>
           </div>
-
+          <div class="form-group">
+            <label for="parteCuerpo">Parte del Cuerpo</label>
+            <textarea name="parteCuerpo" class="form-control parteCuerpo" cols="30" rows="2"></textarea>
+          </div>
           <div class="form-group">
             <label for="entidad">Entidad</label>
-            <input list="listaEntidad" name="entidad"  class="form-control entidad">
+            <input list="listaEntidad" name="entidad" id="entidad" class="form-control entidad">
             <datalist id="listaEntidad">
-
               <?php
               $consultaSQL = "SELECT * FROM entidad order by nombre ASC";
               $entidades = $conectar->consultarDatos($consultaSQL);
               foreach ($entidades as $entidad) :
               ?>
-                <option value="<?php echo ($entidad['nombre']) ?>"></option>
+                <option value="<?php echo ($entidad['nombre']) ?>"> </option>
               <?php endforeach ?>
             </datalist>
           </div>
 
           <div class="form-group">
             <label for="vigencia">Vigencia Orden Medica</label>
-            <input type="text" class="form-control"  name="vigencia">
+            <input type="text" class="form-control vigencia" id="vigencia" name="vigencia">
           </div>
           <div class="form-group">
             <label for="arl">ARL: Codigo - Nombre del médico y fecha de la orden </label>
-            <input type="text" class="form-control" id="arl" name="arl">
+            <input type="text" class="form-control arl" id="arl" name="arl">
           </div>
           <div class="form-group">
             <label for="fecha">Fecha de la cita</label>
-            <input type="date" class="form-control"  name="fecha">
+            <input type="date" class="form-control fecha" id="fecha" name="fecha">
           </div>
           <div class="form-group">
             <label for="observaciones">Observaciones</label>
-            <textarea name="observaciones" class="form-control" name="observaciones"></textarea>
+            <textarea name="observaciones" class="form-control observaciones" id="observaciones" name="observaciones"></textarea>
+
           </div>
+
           <div class="form-group">
-            <select name="estado" id="estado" class="form-control">
-              <option value="0">Admisiones</option>
-              <option value="3">Pendiente Personal</option>
+            <label for="estado">Estado Cita</label>
+            <select name="estado" id="estado" class="form-control estado">
+              <option value="0">Espera</option>
+              <option value="1">Pendiente</option>
+              <option value="2">Gestionado</option>
+              <option value="3">Cancelado</option>
             </select>
+            <select name="urgente" id="urgente" class="urgente form-control">
+              <option value="0"></option>
+              <option value="1">Urgente</option>
+            </select>
+            Las urgencias serán resaltadas en rojo.
           </div>
-        </form>
       </div>
+      </form>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-dark" onclick="ingresarPaciente()">Guardar</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-dark" onclick="editarPaciente()">Guardar</button>
+    </div>
+    </div>
+    
+  </div>
+</div>
+
+  <!-- Modal Editar Admisiones -->
+  <div class="modal fade" id="editarAdmisiones" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Paciente</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formEditarAdmisiones">
+
+            <input hidden="text" class="form-control nro_cita" id="nro_cita" name="nro_cita">
+
+            <div class="form-group ">
+              <label for="codigo">Codigo Autorizacion</label>
+              <input type="text" class="form-control codigo" id="codigo" name="codigo">
+            </div>
+
+            <div class="form-group">
+              <label for="copago">Valor Copago</label>
+              <input type="text" class="form-control copago" id="copago" name="copago">
+            </div>
+
+            <div class="form-group">
+              <label for="observaciones">Observaciones</label>
+              <textarea name="observaciones" class="form-control observaciones" id="observaciones" name="observaciones"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="estado">Estado Cita</label>
+              <select name="estado" id="estado" class="form-control estado">
+                <option value="0">Espera</option>
+                <option value="1">Pendiente</option>
+                <option value="2">Gestionado</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-dark" onclick="editarAdmisiones()">Guardar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>

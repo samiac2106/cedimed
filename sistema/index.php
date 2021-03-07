@@ -36,7 +36,8 @@ $usuario = $_SESSION['iduser'];
                             } else {
                               echo "Bienvenida";
                             } ?> al Sistema de Copagos Cedimed</h1>
-
+ingreso de campos en tabla cita: urgencia y personalizado de booleano con 0, <br>
+cambiar campo pendiente por parte_cuerpo
           <!-- top tiles -->
           <hr>
           <div class=" tile_count mt-5 ">

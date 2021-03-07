@@ -12,7 +12,7 @@ function getdatos(){
     
     echo  "
     <table width=\"100%\" border=\"1\" >
-      <tr width=\"90%\" >
+      <tr width=\"100%\" >
         <td width=\"19%\" style=\"padding: 10px;\"><b><center>Convenio</center></b></td>
         <td width=\"19%\" style=\"padding: 10px;\"><b><center>Autorización física</center></b></td>
         <td width=\"19%\" style=\"padding: 10px;\"><b><center>Autorización audio</center></b></td>

@@ -42,6 +42,7 @@ if (empty($_SESSION['active'])) {
               <h3>LISTA DE ENTIDADES</h3>
               </p>
               <select id="entidades" name="entidades" class="select2 custom-select">
+              <option disabled selected value="">Elige una Opción</option>
                 <?php
                 $consultaSQL = "SELECT * FROM entidad where estatus=1 order by nombre ASC";
                 $entidades = $conectar->consultarDatos($consultaSQL);
@@ -79,10 +80,11 @@ if (empty($_SESSION['active'])) {
 
     
   <script>
-$('.select2').select2();
+
 </script>
   <script>
   $(document).ready(function() {
+    $('.select2').select2();
     $('#entidades').change(function() {
     var idEntidad = "idEntidad=" + $('#entidades').val();
             $.ajax({

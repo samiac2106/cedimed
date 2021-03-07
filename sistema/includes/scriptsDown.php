@@ -7,7 +7,7 @@
   <script src="../vendors/fastclick/lib/fastclick.js"></script>
   <!-- NProgress -->
   <script src="../vendors/nprogress/nprogress.js"></script>
-  <script src="../vendors/select2/dist/js/select2.js"></script>
+  
   <!-- Chart.js -->
   <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
   <!-- gauge.js -->
@@ -43,7 +43,8 @@
 
   <!-- Custom Theme Scripts -->
   <script src="../build/js/custom.min.js"></script>
-  <script src="js/scriptsss.js"></script>
+  <script src="js/scripts.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+  <script src="../vendors/select2/dist/js/select2.js"></script>
 
 

@@ -29,6 +29,7 @@ $conectar = new Conexion();
                   <th>Datos del Paciente</th>
                   <th>Teléfonos</th>
                   <th>Estudio</th>
+                  <th>Parte del Cuerpo</th>
                   <th>Entidad</th>
                   <th>Vigencia Orden</th>
                   <th>Si es ARL….</th>
@@ -47,6 +48,7 @@ $conectar = new Conexion();
                   <th>Datos del Paciente</th>
                   <th>Teléfonos</th>
                   <th>Estudio</th>
+                  <th>Parte del Cuerpo</th>
                   <th>Entidad</th>
                   <th>Vigencia Orden</th>
                   <th>Si es ARL….</th>
@@ -66,8 +68,8 @@ $conectar = new Conexion();
               ci.identificacion, ci.tipo_doc,  ci.telefono, ent.id as id_entidad, est.id_estudio, est.nombre_estudio, ent.nombre as 'entidad', ci.vigencia_orden,
                ci.arl_codigo, ci.fecha_cita,us.nombre as 'asesor', ci.observaciones, esta.estado, estc.estado as 'estado_cita',
                 ad.estado as 'estado_admision', ad.num_cita,ad.cod_autorizacion, ad.copago, ad.valor_copago, ad.observaciones
-                 as 'observaciones_copago', usua.nombre as 'nombre_admision', ci.pendiente as 'pendiente_cita', ci.gestion_pendiente, 
-                 ci.observaciones_pendiente
+                 as 'observaciones_copago', usua.nombre as 'nombre_admision', ci.parte_cuerpo, ci.gestion_pendiente, 
+                 ci.observaciones_pendiente, ci.urgencia, ci.estadocita
                 FROM cita ci 
               INNER JOIN admisiones ad ON ad.num_cita=ci.nro_cita
               INNER JOIN tipo_documento td ON td.num=ci.tipo_doc
@@ -83,8 +85,8 @@ $conectar = new Conexion();
                 ci.identificacion, ci.tipo_doc, ci.telefono, est.id_estudio, est.nombre_estudio, ent.id as id_entidad, ent.nombre as 'entidad', ci.vigencia_orden,
                  ci.arl_codigo, ci.fecha_cita,us.nombre as 'asesor', ci.observaciones, esta.estado, estc.estado as 'estado_cita',
                   ad.estado as 'estado_admision', ad.num_cita,ad.cod_autorizacion, ad.copago, ad.valor_copago, ad.observaciones
-                   as 'observaciones_copago', usua.nombre as 'nombre_admision', ci.pendiente as 'pendiente_cita', ci.gestion_pendiente, 
-                   ci.observaciones_pendiente
+                   as 'observaciones_copago', usua.nombre as 'nombre_admision', ci.parte_cuerpo, ci.gestion_pendiente, 
+                   ci.observaciones_pendiente, ci.urgencia, ci.estadocita
                   FROM cita ci 
                 INNER JOIN admisiones ad ON ad.num_cita=ci.nro_cita
                 INNER JOIN tipo_documento td ON td.num=ci.tipo_doc
@@ -102,15 +104,16 @@ $conectar = new Conexion();
 
                 $editarPaciente = $copago['nro_cita'] . "||" . $copago['tipo_doc'] . "||" . $copago['identificacion'] . "||" . $copago['nombre_paciente']
                   . "||" . $copago['telefono'] . "||" . $copago['nombre_estudio'] . "||" . $copago['entidad'] . "||" . $copago['vigencia_orden'] . "||" . $copago['arl_codigo']
-                  . "||" . $copago['fecha_cita'] . "||" . $copago['observaciones'];
+                  . "||" . $copago['fecha_cita'] . "||" . $copago['observaciones']. "||" . $copago['estadocita']. "||" . $copago['parte_cuerpo']. "||" . $copago['urgencia'];
 
               ?>
-                <tr>
+                <tr style="<?php if($copago['urgencia']==1){echo "background-color:#e68a8a7e";} ?>">
                   <td><?php echo $copago['nro_cita']; ?></td>
                   <td><?php echo $copago['fecha']; ?></td>
                   <td><?php echo $copago['nombre_paciente'] . ' ' . $copago['tipo'] . $copago['identificacion']; ?></td>
                   <td><?php echo $copago['telefono']; ?></td>
                   <td><?php echo $copago['nombre_estudio']; ?></td>
+                  <td><?php echo $copago['parte_cuerpo']; ?></td>
                   <td><?php echo $copago['entidad']; ?></td>
                   <td><?php echo $copago['vigencia_orden']; ?></td>
                   <td><?php echo $copago['arl_codigo']; ?></td>

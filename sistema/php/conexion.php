@@ -1,10 +1,12 @@
 <?php 
 function conectmysql(){
-  $conexionn = mysqli_connect('localhost', 'root', '', 'cita_cedimed');
-  if (mysqli_connect_error($conexionn))
+  $conexion = mysqli_connect('localhost', 'root', '', 'cita_cedimed');
+ /*  if (mysqli_connect_error($conexion)){
     echo "Fallo al conectar a MySQL: " . mysqli_connect_error();
+  } */
+    
 
-  return $conexionn;
+  return $conexion;
 
 }
 

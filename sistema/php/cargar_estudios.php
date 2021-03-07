@@ -9,7 +9,7 @@ function getVideos(){
                                                         WHERE id_entidad= $id order by nombre ASC";
   $result = $mysqli->query($query);
   $estudios = '<p><h3>ESTUDIOS</h3></p><select id="estudios" name="estudios" class="custom-select select2 estudios">';
-  $estudios .= '<option value="0" selected>Elige una opción</option>';
+  $estudios .= '<option selected disabled value="" selected>Elige una Opción</option>';
   while($row = $result->fetch_array(MYSQLI_ASSOC)){
     $estudios .= "<option value='$row[id]'>$row[nombre]</option>";
   }
