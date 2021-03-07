@@ -37,12 +37,13 @@ $usuario = $_SESSION['iduser'];
                               echo "Bienvenida";
                             } ?> al Sistema de Copagos Cedimed</h1>
 ingreso de campos en tabla cita: urgencia y personalizado de booleano con 0, <br>
-cambiar campo pendiente por parte_cuerpo
+cambiar campo pendiente por parte_cuerpo <br>
+en admisiones ingresar un campo llamado observacion_devolucion y nulo varchar1000
           <!-- top tiles -->
           <hr>
           <div class=" tile_count mt-5 ">
             <div class="col-md-6 col-sm-4  tile_stats_count">
-              <span class="count"></i>General Copago</span>
+              <span class="count"></i>General Citas</span>
             </div>
             <div class="col-md-6 col-sm-4  tile_stats_count">
               <div class="count">General Admisiones</div>

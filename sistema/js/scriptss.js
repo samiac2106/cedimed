@@ -121,6 +121,8 @@ function pasarDatosPaciente(data) {
   $(".estado").val(d[11]);
   $(".parteCuerpo").val(d[12]);
   $(".urgente").val(d[13]);
+  $(".estadoAdmisiones").val(d[14]);
+  $(".observacionDevolucion").val(d[15]);
 }
 /* editar Paciente */
 function editarPaciente() {

@@ -11,7 +11,7 @@
     <!-- sidebar menu -->
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
       <div class="menu_section">
-      <br><br><br>
+        <br><br><br>
         <h3 class="mt-5">General</h3>
         <ul class="nav side-menu">
           <li><a href="convenio.php"><i class="glyphicon glyphicon-search"></i> Convenio Entidades </a></li>
@@ -19,8 +19,8 @@
             <li><a href="#"><i class="glyphicon glyphicon-earphone"></i> Copagos <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="listaGeneralCopago.php">General</a></li>
-                <li><a href="listaEsperaCopago.php">Espera</a></li>
-                <li><a href="listaPendienteCopago.php">Pendiente personal</a></li>
+                <li><a href="listaEsperaCopago.php">Mis Pendientes Copago</a></li>
+                <li><a href="listaPendienteCopago.php">Mis Pendiente Personal</a></li>
 
               </ul>
             </li>
@@ -107,7 +107,7 @@
 <!-- /top tiles -->
 
 <!-- Modal Registrar Paciente-->
-<div class="modal fade" id="registrarPaciente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="registrarPaciente"  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -220,7 +220,7 @@
 </div>
 
 <!-- Modal Editar Paciente -->
-<div class="modal fade" id="editarPaciente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editarPaciente"  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -325,60 +325,81 @@
             Las urgencias serán resaltadas en rojo.
           </div>
       </div>
+      <div class="modal-body">
+        <div class="border text-center">
+          <h2 class="font-weight-bold">Información de admisiones</h2>
+          <div class="form-group">
+            <label for="estado">Estado Admisiones</label>
+            <select name="estadoAdmisiones" id="estadoAdmisiones" class="form-control estadoAdmisiones">
+              <option value="0">Espera</option>
+              <option value="2">Gestionado</option>
+            </select>
+
+          </div>
+          <div class="form-group">
+            <label for="observacionDevolucion">Observaciones </label>
+            <textarea name="observacionDevolucion" class="form-control observacionDevolucion" id="observacionDevolucion"></textarea>
+
+          </div>
+        </div>
+      </div>
       </form>
       <div class="modal-footer">
-      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-      <button type="button" class="btn btn-dark" onclick="editarPaciente()">Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-dark" onclick="editarPaciente()">Guardar</button>
+      </div>
     </div>
-    </div>
-    
+
   </div>
 </div>
 
-  <!-- Modal Editar Admisiones -->
-  <div class="modal fade" id="editarAdmisiones" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar Paciente</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form id="formEditarAdmisiones">
+<!-- Modal Editar Admisiones -->
+<div class="modal fade" id="editarAdmisiones" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Paciente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditarAdmisiones">
 
-            <input hidden="text" class="form-control nro_cita" id="nro_cita" name="nro_cita">
+          <input hidden="text" class="form-control nro_cita" id="nro_cita" name="nro_cita">
 
-            <div class="form-group ">
-              <label for="codigo">Codigo Autorizacion</label>
-              <input type="text" class="form-control codigo" id="codigo" name="codigo">
-            </div>
+          <div class="form-group ">
+            <label for="codigo">Codigo Autorizacion</label>
+            <input type="text" class="form-control codigo" id="codigo" name="codigo">
+          </div>
 
-            <div class="form-group">
-              <label for="copago">Valor Copago</label>
-              <input type="text" class="form-control copago" id="copago" name="copago">
-            </div>
+          <div class="form-group">
+            <label for="copago">Valor Copago</label>
+            <input type="text" class="form-control copago" id="copago" name="copago">
+          </div>
 
-            <div class="form-group">
-              <label for="observaciones">Observaciones</label>
-              <textarea name="observaciones" class="form-control observaciones" id="observaciones" name="observaciones"></textarea>
-            </div>
+          <div class="form-group">
+            <label for="observaciones">Observaciones</label>
+            <textarea name="observaciones" class="form-control observaciones" id="observaciones" name="observaciones"></textarea>
+          </div>
 
-            <div class="form-group">
-              <label for="estado">Estado Cita</label>
-              <select name="estado" id="estado" class="form-control estado">
-                <option value="0">Espera</option>
-                <option value="1">Pendiente</option>
-                <option value="2">Gestionado</option>
-              </select>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-dark" onclick="editarAdmisiones()">Guardar</button>
-        </div>
+          <div class="form-group">
+            <label for="estado">Estado Cita</label>
+            <select name="estado" id="estado" class="form-control estado">
+              <option value="0">Espera</option>
+              <option value="1">Pendiente</option>
+              <option value="2">Gestionado</option>
+            </select>
+          </div>
+
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-dark" onclick="editarAdmisiones()">Guardar</button>
       </div>
     </div>
   </div>
+</div>

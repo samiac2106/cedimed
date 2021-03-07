@@ -17,6 +17,8 @@ $observaciones=$_POST['observaciones'];
 $estado=$_POST['estado'];
 $parteCuerpo=$_POST['parteCuerpo'];
 $urgente=$_POST['urgente'];
+$estadoAdmision=$_POST['estadoAdmisiones'];
+$observacionDevolucion=$_POST['observacionDevolucion'];
 
 /* traer  id del estudio seleccionado */
 $consultaSQL="SELECT * FROM estudios WHERE nombre_estudio='$estudio'";
@@ -28,6 +30,10 @@ $consultaSQL="SELECT * FROM entidad WHERE nombre='$entidad'";
 $result=$conectar->consultarDatos($consultaSQL);
 $entidad=$result[0]['id'];
 
+/* editar Admisiones */
+$consultaSQL="UPDATE admisiones SET estado='$estadoAdmision', observacion_devolucion='$observacionDevolucion' 
+              WHERE num_cita=$num_cita";
+$editar=$conectar->editarDatos($consultaSQL);
 /* Editar datos del paciente */
 $consultaSQL="UPDATE cita SET identificacion='$documento', tipo_doc='$tipo', nombre='$nombre', telefono='$telefono', 
 entidad='$entidad', vigencia_orden='$vigencia', fecha_cita='$fecha', estadocita='$estado', observaciones='$observaciones', estudio='$estudio', 

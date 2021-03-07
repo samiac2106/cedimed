@@ -68,7 +68,7 @@ $conectar = new Conexion();
                ci.arl_codigo, ci.fecha_cita,us.nombre as 'asesor', ci.observaciones, esta.estado, estc.estado as 'estado_cita',
                 ad.estado as 'estado_admision', ad.num_cita,ad.cod_autorizacion, ad.copago, ad.valor_copago, ad.observaciones
                  as 'observaciones_copago', usua.nombre as 'nombre_admision', ci.parte_cuerpo, ci.gestion_pendiente, 
-                 ci.observaciones_pendiente, ci.urgencia
+                 ci.observaciones_pendiente, ci.urgencia, ad.observacion_devolucion
                 FROM cita ci 
               INNER JOIN admisiones ad ON ad.num_cita=ci.nro_cita
               INNER JOIN tipo_documento td ON td.num=ci.tipo_doc
@@ -85,7 +85,7 @@ $conectar = new Conexion();
               <?php foreach ($copagos as $copago) :
 
                 $editarPaciente =  $copago['nro_cita'] . "||" . $copago['cod_autorizacion'] . "||" . $copago['valor_copago'] . "||" . $copago['observaciones_copago'];
-
+                $obsDevol=$copago['observacion_devolucion'];
               ?>
                 <tr style="<?php if($copago['urgencia']==1){echo "background-color:#e68a8a7e";} ?>">
                   <td><?php echo $copago['nro_cita']; ?></td>
@@ -98,7 +98,7 @@ $conectar = new Conexion();
                   <td><?php echo $copago['vigencia_orden']; ?></td>
                   <td><?php echo $copago['arl_codigo']; ?></td>
                   <td><?php echo $copago['fecha_cita']; ?></td>
-                  <td><?php echo $copago['observaciones']; ?></td>
+                  <td><?php echo $copago['observaciones']; if($obsDevol!=""){echo (" <b>Devolución:</b>".$obsDevol);} ?></td>
                   <td><?php echo $copago['cod_autorizacion']; ?></td>
                   <td><?php echo $copago['valor_copago']; ?></td>
                   <td><?php echo $copago['observaciones_copago']; ?></td>
@@ -132,7 +132,7 @@ $conectar = new Conexion();
     // DataTable
     var table = $('#datatable').DataTable({
         "order": [
-                [0, "desc"]
+                [0, "asc"]
             ],
             "pageLength": 25,
             "language": {

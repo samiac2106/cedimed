@@ -40,7 +40,7 @@ if (empty($_SESSION['active'])) {
 
     <!-- modarl para registrar contingencia -->
 
-    <div class="modal fade" id="ingresarContingencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ingresarContingencia" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -129,7 +129,7 @@ if (empty($_SESSION['active'])) {
         </div>
     </div>
     <!-- modal para editar contingencia -->
-    <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editarModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
