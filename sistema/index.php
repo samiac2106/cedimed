@@ -36,7 +36,7 @@ $usuario = $_SESSION['iduser'];
                             } else {
                               echo "Bienvenida";
                             } ?> al Sistema de Copagos Cedimed</h1>
- <div class="col-12 text-center mt-5"><img src="../img/movertabla.png" alt="" style="width:25%"></div>
+          <div class="col-12 text-center mt-5"><img src="../img/movertabla.png" alt="" style="width:25%"></div>
           <!-- top tiles -->
           <hr>
           <div class=" tile_count mt-5 ">
@@ -200,14 +200,18 @@ $usuario = $_SESSION['iduser'];
       <?php endif ?>
       <?php if ($_SESSION['idrol'] == 1) : ?>
         <br><br><br><br><br><br><br><br><br><br><br>
-        <div class="barChartCopago"></div>
+        <div >
+          <div class="col-xl-8">
+            <div class="barChartCopago"></div>
+          </div>
+        </div>
       <?php endif ?>
-      
-      
-      
+
+
+
         </center>
 
-       
+
       </div>
     </div>
   </div>

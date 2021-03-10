@@ -29,7 +29,6 @@ $conectar = new Conexion();
                   <th>Datos del Paciente</th>
                   <th>Teléfonos</th>
                   <th>Estudio</th>
-                  <th>Parte del Cuerpo</th>
                   <th>Entidad</th>
                   <th>Vigencia Orden</th>
                   <th>Si es ARL….</th>
@@ -49,7 +48,6 @@ $conectar = new Conexion();
                   <th>Datos del Paciente</th>
                   <th>Teléfonos</th>
                   <th>Estudio</th>
-                  <th>Parte del Cuerpo</th>
                   <th>Entidad</th>
                   <th>Vigencia Orden</th>
                   <th>Si es ARL….</th>
@@ -116,8 +114,7 @@ $conectar = new Conexion();
                   <td><?php echo $copago['fecha']; ?></td>
                   <td><?php echo $copago['nombre_paciente'] . ' ' . $copago['tipo'] . $copago['identificacion']; ?></td>
                   <td><?php echo $copago['telefono']; ?></td>
-                  <td><?php echo $copago['nombre_estudio']; ?></td>
-                  <td><?php echo $copago['parte_cuerpo']; ?></td>
+                  <td><?php echo $copago['nombre_estudio']." ".$copago['parte_cuerpo']; ?></td>
                   <td><?php echo $copago['entidad']; ?></td>
                   <td><?php echo $copago['vigencia_orden']; ?></td>
                   <td><?php echo $copago['arl_codigo']; ?></td>

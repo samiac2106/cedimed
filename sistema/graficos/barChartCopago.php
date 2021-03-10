@@ -64,7 +64,24 @@ var trace2 = {
 
 var data = [trace1, trace2];
 
-var layout = {barmode: 'stack'};
+var layout = {
+  title: '<b>Citas por Auxiliares</b>',
+  barmode: 'stack',
+  xaxis: {
+            title: 'Auxiliares',
+            tickfont: {
+                size: 14,
+                color: 'rgb(107, 107, 107)'
+            }
+        },
+        yaxis: {
+            title: 'N° Citas',
+            titlefont: {
+                size: 16,
+                color: 'rgb(107, 107, 107)'
+            },
+          }
+          };
 
 Plotly.newPlot('barChartCopago', data, layout);
 

@@ -9,7 +9,6 @@ function getdatos(){
 
   $consulta = $result->fetch_array(MYSQLI_ASSOC);
     
-    
     echo  "
     <table width=\"100%\" border=\"1\" >
       <tr width=\"100%\" >
@@ -39,7 +38,9 @@ function getdatos(){
         <td colspan=\"6\"height=\"10px\"><b><center><h1>Observaciones</h1></center></b></td>
       </tr>
       <tr>
-      <td colspan=\"6\" style=\"padding: 15px;\"><center>".$consulta['observaciones']."</center></td>
+      <td colspan=\"6\" style=\"padding: 15px;\"><center>".$consulta['observaciones'].
+      
+      "</center></td>
       </tr>";
       if($consulta['img']!=''){
         echo  "<tr><td colspan=\"6\"height=\"10px\" ><b><center><h1>Imagen</h1></center></b></td>
