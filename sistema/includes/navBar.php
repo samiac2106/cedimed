@@ -170,7 +170,7 @@
           </div>
           <div class="form-group">
             <label for="entidad">Entidad</label>
-            <select name="entidad" class="select2 form-control">
+            <select name="entidad" class="select2 form-control" id="entidad">
               <?php
               $consultaSQL = "SELECT * FROM entidad order by nombre ASC";
               $entidades = $conectar->consultarDatos($consultaSQL);

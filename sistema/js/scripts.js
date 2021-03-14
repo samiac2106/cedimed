@@ -38,6 +38,9 @@ function ingresarPaciente() {
         $(".tablaEspera").load("tablas/tablaEsperaCopago.php");
         $(".tablaPendiente").load("tablas/tablaPendienteCopago.php");
         $("#registrarPaciente").modal("hide");
+        $(".form-control").val('');
+  
+        
         Swal.fire({
           position: "center",
           html: '<img src="../img/icono-cedimed.png" ><br>',
@@ -45,6 +48,7 @@ function ingresarPaciente() {
           showConfirmButton: false,
           timer: 2000,
         });
+        
       } else if (data == 2) {
         Swal.fire({
           position: "center",
