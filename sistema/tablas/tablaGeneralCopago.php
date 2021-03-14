@@ -7,7 +7,7 @@ $conectar = new Conexion();
 <div class="col-md-12 col-sm-12 ">
   <div class="x_panel">
     <div class="x_title">
-      <h2>General Copago</h2>
+      <h2>Adjuntos De Chats</h2>
       <ul class="nav navbar-right panel_toolbox">
         <button class="btn btn-dark" data-toggle="modal" data-target="#registrarPaciente">Registrar Paciente</button>
       </ul>
@@ -18,7 +18,7 @@ $conectar = new Conexion();
         <div class="col-sm-12">
           <div class="card-box table-responsive">
             <p class="text-muted font-13 m-b-30">
-              Aquí se encuentra todas las citas realizadas de todos los asesores
+              Aquí se encuentra los adjuntos ingresado por cada asesor
             </p>
             <table id="datatable" class="table table table-hover table-bordered" style="width:100%">
               <thead>

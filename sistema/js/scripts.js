@@ -279,3 +279,59 @@ function editarContingencia() {
     }
   });
 }
+
+
+//ORDEN MEDICA
+function formEditarAdjunto(data){
+  d = data.split('||');
+  $('.idAdjunto').val(d[0]);
+  $('.idAdjunto').html(d[0]);
+  $('.respuesta').val(d[1]);
+}
+
+function editarAdjunto(){
+
+  $.ajax({
+    type: "POST",
+    url: "php/editarAdjunto.php",
+    data: $('#editarOrden').serialize(),
+    dataType: "json",
+    success: function (data) {
+     if(data==1){
+      $('.tablaImagen').load('tablas/tablaImagenCita.php');
+      $("#editarAdjunto").modal("hide");
+      Swal.fire({
+        position: 'top-end',
+        html: '<img src="../img/icono-cedimed.png" ><br>',
+        title: 'Consulta Editada!!!!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+     }
+    }
+  });
+}
+
+function finalizarAdjunto(){
+
+  $.ajax({
+    type: "POST",
+    url: "php/finalizarAdjunto.php",
+    data: $('#finalizarOrden').serialize(),
+    dataType: "json",
+    success: function (data) {
+     if(data==1){
+      $('.tablaImagen').load('tablas/tablaImagenCita.php');
+      $("#finalizarAdjunto").modal("hide");
+      Swal.fire({
+        position: 'top-end',
+        html: '<img src="../img/icono-cedimed.png" ><br>',
+        title: 'Orden Finalizada!!!!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+     }
+    }
+  });
+}
+

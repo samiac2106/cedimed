@@ -200,7 +200,7 @@ $usuario = $_SESSION['iduser'];
       <?php endif ?>
       <?php if ($_SESSION['idrol'] == 1) : ?>
         <br><br><br><br><br><br><br><br><br><br><br>
-        <div >
+        <div>
           <div class="col-xl-8">
             <div class="barChartCopago"></div>
           </div>

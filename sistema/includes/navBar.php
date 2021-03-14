@@ -24,6 +24,7 @@
 
               </ul>
             </li>
+            <li><a href="listaImagenesCitas.php"><i class="fa fa-paperclip"></i> Órdenes Médicas </a></li>
           <?php endif; ?>
 
           <?php if ($_SESSION['idrol'] == 3 || $_SESSION['idrol'] == 1) :  ?>
@@ -198,7 +199,7 @@
           </div>
           <div class="form-group">
             <label for="">Estados del Ingreso</label>
-            <select name="estado" id="estado" class="form-control">
+            <select name="estado" class="form-control">
               <option value="0">Admisiones</option>
               <option value="3">Pendiente Personal</option>
             </select>
@@ -235,7 +236,7 @@
             <div class="form- col-3">
               <label for="tipo">Tipo </label>
               <input type="hidden" name="nro_cita" class="nro_cita">
-              <select name="tipo" class="custom-select tipo" id="tipo">
+              <select name="tipo" class="custom-select tipo" >
                 <?php
                 $consultaSQL = "SELECT * FROM tipo_documento ORDER BY tipo";
                 $tipos = $conectar->consultarDatos($consultaSQL);
@@ -248,21 +249,21 @@
             </div>
             <div class="form-group col-9">
               <label for="documento">Nro de documento</label>
-              <input type="number" class="form-control documento" id="documento" name="documento">
+              <input type="number" class="form-control documento"  name="documento">
             </div>
           </div>
 
           <div class="form-group">
             <label for="nombres">Nombres y Apellidos</label>
-            <input type="text" class="form-control nombres" id="nombres" name="nombres">
+            <input type="text" class="form-control nombres"  name="nombres">
           </div>
           <div class="form-group">
             <label for="telefonos">Teléfonos</label>
-            <input type="text" class="form-control telefonos" id="telefonos" name="telefonos">
+            <input type="text" class="form-control telefonos" name="telefonos">
           </div>
           <div class="form-group">
             <label for="estudio">Estudio</label>
-            <input list="listaEstudio" name="estudio" id="estudio" class="form-control estudio">
+            <input list="listaEstudio" name="estudio" class="form-control estudio">
             <datalist id="listaEstudio">
 
               <?php
@@ -280,7 +281,7 @@
           </div>
           <div class="form-group">
             <label for="entidad">Entidad</label>
-            <input list="listaEntidad" name="entidad" id="entidad" class="form-control entidad">
+            <input list="listaEntidad" name="entidad" class="form-control entidad">
             <datalist id="listaEntidad">
               <?php
               $consultaSQL = "SELECT * FROM entidad order by nombre ASC";
@@ -294,31 +295,31 @@
 
           <div class="form-group">
             <label for="vigencia">Vigencia Orden Medica</label>
-            <input type="text" class="form-control vigencia" id="vigencia" name="vigencia">
+            <input type="text" class="form-control vigencia" name="vigencia">
           </div>
           <div class="form-group">
             <label for="arl">ARL: Codigo - Nombre del médico y fecha de la orden </label>
-            <input type="text" class="form-control arl" id="arl" name="arl">
+            <input type="text" class="form-control arl" name="arl">
           </div>
           <div class="form-group">
             <label for="fecha">Fecha de la cita</label>
-            <input type="date" class="form-control fecha" id="fecha" name="fecha">
+            <input type="date" class="form-control fecha" name="fecha">
           </div>
           <div class="form-group">
             <label for="observaciones">Observaciones</label>
-            <textarea name="observaciones" class="form-control observaciones" id="observaciones" name="observaciones"></textarea>
+            <textarea name="observaciones" class="form-control observaciones" name="observaciones"></textarea>
 
           </div>
 
           <div class="form-group">
             <label for="estado">Estado Cita</label>
-            <select name="estado" id="estado" class="form-control estado">
+            <select name="estado" class="form-control estado">
               <option value="0">Espera</option>
               <option value="1">Pendiente</option>
               <option value="2">Gestionado</option>
               <option value="3">Cancelado</option>
             </select>
-            <select name="urgente" id="urgente" class="urgente form-control">
+            <select name="urgente" class="urgente form-control">
               <option value="0"></option>
               <option value="1">Urgente</option>
             </select>
@@ -330,7 +331,7 @@
           <h2 class="font-weight-bold">Información de admisiones</h2>
           <div class="form-group">
             <label for="estado">Estado Admisiones</label>
-            <select name="estadoAdmisiones" id="estadoAdmisiones" class="form-control estadoAdmisiones">
+            <select name="estadoAdmisiones" class="form-control estadoAdmisiones">
               <option value="0">Espera</option>
               <option value="2">Gestionado</option>
             </select>
