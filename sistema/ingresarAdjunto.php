@@ -94,7 +94,7 @@ if (move_uploaded_file($_FILES['imgProducto']['tmp_name'], $ruta . $url_img)) {
         showConfirmButton: false,
         timer: 2000
       }).then((result) => {
-        window.location=\"http://localhost/cedimed/sistema/listaImagenesCitas.php\";
+        window.location=\"listaImagenesCitas.php\";
     } )
     </script>");
     
