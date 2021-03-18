@@ -3,9 +3,6 @@
     <div class="navbar nav_title" style="border: 0;">
       <a href="index.php" class="site_title"><img src="../img/cedimed-icono.png" alt=""> <span>Cedimed</span></a>
     </div>
-
-
-
     <br />
 
     <!-- sidebar menu -->
@@ -33,7 +30,7 @@
               <ul class="nav child_menu">
                 <li><a href="listaGeneralAdmisiones.php">General</a></li>
                 <li><a href="listaEsperaAdmisiones.php">Espera</a></li>
-                <li><a href="listaPendienteAdmisiones.php">Pendiente personal</a></li>
+                <li><a href="listaPendienteAdmisiones.php">Pendientes</a></li>
               </ul>
             </li>
           <?php endif ?>
